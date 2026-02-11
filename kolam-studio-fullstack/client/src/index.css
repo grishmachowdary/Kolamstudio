@@ -1,0 +1,106 @@
+/**
+ * GLOBAL STYLES
+ * 
+ * This file contains:
+ * 1. Tailwind CSS imports
+ * 2. Custom global styles
+ * 3. CSS animations
+ */
+
+/* Import Tailwind's base, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 
+  CUSTOM BASE STYLES
+  These apply to the entire application
+*/
+@layer base {
+  * {
+    @apply border-gray-200;
+  }
+  
+  body {
+    @apply bg-sand text-charcoal;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+  
+  /* Smooth scrolling */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/*
+  CUSTOM COMPONENT STYLES
+  Reusable component classes
+*/
+@layer components {
+  /* Glass morphism effect for cards */
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-gray-200 rounded-lg shadow-sm;
+  }
+  
+  /* Button styles */
+  .btn-primary {
+    @apply bg-tamil-orange text-white px-6 py-2 rounded-lg hover:bg-orange-600 transition-colors;
+  }
+  
+  .btn-secondary {
+    @apply bg-gray-200 text-charcoal px-6 py-2 rounded-lg hover:bg-gray-300 transition-colors;
+  }
+  
+  /* Input styles */
+  .input-field {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-tamil-orange;
+  }
+}
+
+/*
+  CUSTOM ANIMATIONS
+*/
+@layer utilities {
+  /* Fade in animation */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Float animation for badges */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+}
+
+/*
+  CANVAS SPECIFIC STYLES
+  For the whiteboard drawing canvas
+*/
+canvas {
+  cursor: crosshair;
+  touch-action: none; /* Prevents scrolling while drawing on mobile */
+}
+
+canvas.eraser-mode {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"><circle cx="10" cy="10" r="8" fill="white" stroke="black"/></svg>') 10 10, auto;
+}
